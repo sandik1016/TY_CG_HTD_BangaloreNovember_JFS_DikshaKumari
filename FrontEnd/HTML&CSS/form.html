@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" action="#">
+        
+    Username:
+    <input type="text" value="user" name="fname" placeholder="username" required readonly minlength="2" maxlength="4"><br><br>
+    Password:
+    <input type="password" name="passsword" placeholder="password" required pattern="priya1234"><br><br>
+
+    <!-- single options -->
+    <fieldset>
+
+    <legend>Options</legend>
+
+    
+    <input type="radio"name="gender" value="male" >Male
+    <input type="radio" name="gender" value="female" checked>Female<br><BR>
+    
+    </fieldset>
+        <!-- multiple options -->
+    <input type="checkbox" name="lang" value="java">java
+    <input type="checkbox" name="lang" value="sql">sql<br><BR>
+
+        <!-- dropdown -->
+        <select name="cartoons" id="">
+            <option value="tom and jerry">tom and jerry</option>
+            <option value="chhotta bheem">chhotta bheem</option>
+            <option value="ben 10">ben 10</option>
+            <option value="sinchan">sinchan</option>
+        </select><br><Br>
+            Select File:
+            <input type="file"  value="choose" name="myFile" id=""><br><br>
+            <textarea name="story" id="" cols="30" rows="10">once upon a time</textarea><br><br>
+            <input list="languages">
+            <datalist id="languages">
+                <option value="kannada">kannada</option>
+            <option value="english">English</option><br><br>
+            </datalist>
+    <input type="submit" value="click here">
+    <input type="reset" name="" id="">
+    <input type="date" name="" id="">
+</form>
+</body>
+</html>

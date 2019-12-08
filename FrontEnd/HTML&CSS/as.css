@@ -1,0 +1,14 @@
+a{
+    text-decoration: none;
+    
+}
+img{
+    border-radius:80% ;
+    padding:20px;
+}
+div{
+    border: 1px solid black;
+    width: 30%;
+    height: 600px;
+    letter-spacing: 2px;
+}

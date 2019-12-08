@@ -1,0 +1,251 @@
+SQL> select  ename,deptno from emp where ename like 'A%' or ename like 'E%' or ename like 'I%' or ename like 'O%' or ename like 'U%' group by ename,deptno;
+
+ENAME          DEPTNO                                                                                                                                 
+---------- ----------                                                                                                                                 
+ADAMS              20                                                                                                                                 
+ALLEN              30                                                                                                                                 
+
+SQL> select  ename,deptno from emp where ename like 'A%' or ename like 'E%' or ename like 'I%' or ename like 'O%' or ename like 'U%' group by ename,deptno;
+
+ENAME          DEPTNO                                                                                                                                 
+---------- ----------                                                                                                                                 
+ADAMS              20                                                                                                                                 
+ALLEN              30                                                                                                                                 
+
+SQL> select  ename,deptno from emp where ename like 'A%' or ename like 'E%' or ename like 'I%' or ename like 'O%' or ename like 'U%' group by deptno;
+select  ename,deptno from emp where ename like 'A%' or ename like 'E%' or ename like 'I%' or ename like 'O%' or ename like 'U%' group by deptno
+        *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                 
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                 
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                 
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                                                                 
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                                                                 
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                 
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                                                                 
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                 
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                 
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                 
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                 
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                                                                 
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                 
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                 
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                 
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                                                                 
+
+14 rows selected.
+
+SQL> select count(*),deptno from emp where mgr='7839' group by deptno;
+
+  COUNT(*)     DEPTNO                                                                                                                                 
+---------- ----------                                                                                                                                 
+         1         30                                                                                                                                 
+         1         20                                                                                                                                 
+         1         10                                                                                                                                 
+
+SQL> select max(sal),job from emp where ename not like '%K' group by job;
+
+  MAX(SAL) JOB                                                                                                                                        
+---------- ---------                                                                                                                                  
+      1300 CLERK                                                                                                                                      
+      1600 SALESMAN                                                                                                                                   
+      5000 PRESIDENT                                                                                                                                  
+      2975 MANAGER                                                                                                                                    
+      3000 ANALYST                                                                                                                                    
+
+SQL> select count(*),deptno from emp e1 join emp e2 where e1.sal=e2.sal group by deptno;
+select count(*),deptno from emp e1 join emp e2 where e1.sal=e2.sal group by deptno
+                                               *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> select count(*),deptno from emp e1 join emp e2 on  e1.sal=e2.sal group by deptno;
+select count(*),deptno from emp e1 join emp e2 on  e1.sal=e2.sal group by deptno
+                                                                          *
+ERROR at line 1:
+ORA-00918: column ambiguously defined 
+
+
+SQL> select count(*),deptno from emp e1 join emp e2 on  e1.sal=e2.sal group by e1.deptno;
+select count(*),deptno from emp e1 join emp e2 on  e1.sal=e2.sal group by e1.deptno
+                *
+ERROR at line 1:
+ORA-00918: column ambiguously defined 
+
+
+SQL>  select count(*),e1.deptno from emp e1 join emp e2 on  e1.sal=e2.sal group by e1.deptno;
+
+  COUNT(*)     DEPTNO                                                                                                                                 
+---------- ----------                                                                                                                                 
+         8         30                                                                                                                                 
+         7         20                                                                                                                                 
+         3         10                                                                                                                                 
+
+SQL> select  sal,ename from emp where sal>1600 and mgr is null group by ename,sal;
+
+       SAL ENAME                                                                                                                                      
+---------- ----------                                                                                                                                 
+      5000 KING                                                                                                                                       
+
+SQL> select count (*),deptno from emp where comm is not null group by deptno;
+
+  COUNT(*)     DEPTNO                                                                                                                                 
+---------- ----------                                                                                                                                 
+         4         30                                                                                                                                 
+
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                 
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                 
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                 
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                                                                 
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                                                                 
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                 
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                                                                 
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                 
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                 
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                 
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                 
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                                                                 
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                 
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                 
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                 
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                                                                 
+
+14 rows selected.
+
+SQL> select count (*),deptno from emp where comm is not null and comm like '0%'group by deptno;
+
+  COUNT(*)     DEPTNO                                                                                                                                 
+---------- ----------                                                                                                                                 
+         1         30                                                                                                                                 
+
+SQL> select count (*),deptno from emp where comm is not null and comm not like '0%'group by deptno;
+
+  COUNT(*)     DEPTNO                                                                                                                                 
+---------- ----------                                                                                                                                 
+         3         30                                                                                                                                 
+
+SQL> select sal,deptno from emp where job='MANAGER' group by sal,deptno;
+
+       SAL     DEPTNO                                                                                                                                 
+---------- ----------                                                                                                                                 
+      2450         10                                                                                                                                 
+      2850         30                                                                                                                                 
+      2975         20                                                                                                                                 
+
+SQL> select count(*),deptno from emp where deptno!='10' group by deptno;
+
+  COUNT(*)     DEPTNO                                                                                                                                 
+---------- ----------                                                                                                                                 
+         6         30                                                                                                                                 
+         5         20                                                                                                                                 
+
+SQL> select count(*),deptno from emp where job ='CLERK' group by deptno;
+
+  COUNT(*)     DEPTNO                                                                                                                                 
+---------- ----------                                                                                                                                 
+         1         30                                                                                                                                 
+         2         20                                                                                                                                 
+         1         10                                                                                                                                 
+
+SQL> select count(*),job from emp where job in ('MANAGER','ANALYST') and sal*12 as ann_saly like '0%'
+  2  
+SQL> select count(*),job from emp where job in ('MANAGER','ANALYST') and sal*12 as ann_saly like '%0'
+  2  
+SQL> select count(*),deptno from emp where job in ('MANAGER','ANALYST') and sal*12 as ann_saly like '%0' group by deptno;
+select count(*),deptno from emp where job in ('MANAGER','ANALYST') and sal*12 as ann_saly like '%0' group by deptno
+                                                                              *
+ERROR at line 1:
+ORA-00920: invalid relational operator 
+
+
+SQL> select count(*),deptno from emp where job in ('MANAGER','ANALYST') and sal*12 like '%0' group by deptno;
+
+  COUNT(*)     DEPTNO                                                                                                                                 
+---------- ----------                                                                                                                                 
+         1         30                                                                                                                                 
+         3         20                                                                                                                                 
+         1         10                                                                                                                                 
+
+SQL> select deptno from emp where avg(sal) between 1
+  2  
+SQL> select deptno from emp where avg(sal) between 2500 and 3000 group by deptno;
+select deptno from emp where avg(sal) between 2500 and 3000 group by deptno
+                             *
+ERROR at line 1:
+ORA-00934: group function is not allowed here 
+
+
+SQL> select deptno from emp group by deptno having  avg(sal) between 2500 and 3000;
+
+    DEPTNO                                                                                                                                            
+----------                                                                                                                                            
+        10                                                                                                                                            
+
+SQL> select deptno,avg(sal) from emp group by deptno having  avg(sal) between 2500 and 3000;
+
+    DEPTNO   AVG(SAL)                                                                                                                                 
+---------- ----------                                                                                                                                 
+        10 2916.66667                                                                                                                                 
+
+SQL>  select deptno,avg(sal) from emp group by deptno having  avg(sal);
+ select deptno,avg(sal) from emp group by deptno having  avg(sal)
+                                                                *
+ERROR at line 1:
+ORA-00920: invalid relational operator 
+
+
+SQL>  select deptno,avg(sal) from emp group by deptno;
+
+    DEPTNO   AVG(SAL)                                                                                                                                 
+---------- ----------                                                                                                                                 
+        30 1566.66667                                                                                                                                 
+        20       2175                                                                                                                                 
+        10 2916.66667                                                                                                                                 
+
+SQL> select count(*),hiredate from emp where count(hiredate)>3 group by hiredate;
+select count(*),hiredate from emp where count(hiredate)>3 group by hiredate
+                                        *
+ERROR at line 1:
+ORA-00934: group function is not allowed here 
+
+
+SQL> select count(*),hiredate from emp group by hiredate having  count(hiredate)>3;
+
+no rows selected
+
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                 
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                 
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                 
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                                                                 
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                                                                 
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                 
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                                                                 
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                 
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                 
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                 
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                 
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                                                                 
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                 
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                 
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                 
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                                                                 
+
+14 rows selected.
+
+SQL>  select count(*),hiredate from emp group by hiredate having  count(hiredate)>=2;
+
+  COUNT(*) HIREDATE                                                                                                                                   
+---------- ---------                                                                                                                                  
+         2 03-DEC-81                                                                                                                                  
+
+SQL> spool off;

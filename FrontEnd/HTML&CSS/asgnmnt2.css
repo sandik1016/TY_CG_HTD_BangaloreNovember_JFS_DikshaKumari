@@ -1,0 +1,48 @@
+#header{
+	background-color:yellowgreen;
+	width:100%;
+	height:500px;
+	position: fixed;
+	
+	padding-top: 0px;
+}
+#subheader{
+	background-color:green;
+	width:50%;
+	height:500px;
+	position: fixed;
+	
+	padding-top: 0px;
+}
+#subheader1{
+	background-color:brown;
+	width:50%;
+	height:250px;
+	position: fixed;
+	
+	padding-top: 0px;
+}
+#subheader2{
+	background-color:hotpink;
+	width:50%;
+	height:250px;
+	position: fixed;
+	float:right;
+	padding-top: 0px;
+}
+#subheader3{
+	background-color:indigo;
+	width:25%;
+	height:500px;
+	position: fixed;
+	
+	padding-top: 0px;
+}
+#subheader4{
+	background-color:sienna;
+	width:25%;
+	height:500px;
+	position: fixed;
+	float:right;
+	padding-top: 0px;
+}
