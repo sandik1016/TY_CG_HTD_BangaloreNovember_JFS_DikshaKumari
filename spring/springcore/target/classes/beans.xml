@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd 
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<bean id="hello" class="com.capgemini.springcore.beans.Hello">
+		<!-- scope="prototype" --> <!-- init-method ="init" destroy-method="destroy" -->
+		<property name="msg" value="i love java"></property><!-- configure url using 
+			setter method -->
+		<!-- <constructor-arg name="msg" value="i love python"></constructor-arg> -->
+		<!-- configure using constructor -->
+	</bean>
+	<!-- hello.setMessage("I love java"); -->
+
+
+
+	<bean id="cat" class="com.capgemini.springcore.beans.Cat"></bean>
+	<bean id="dog" class="com.capgemini.springcore.beans.Dog" primary="true"></bean><!--use dog object when spring get confused which 
+		object to create using primary -->
+		<bean id="pet" class="com.capgemini.springcore.beans.Pet"  autowire="byType">
+		<property name="name" value="suki"></property>
+		
+		
+		<!-- <property name="animal" ref="dog"></property> --><!--it is object type so use ref  -->
+		<!-- for constructor  -->
+		<!-- <constructor-arg name="name" value="jimmy"/> -->
+		<!-- give autowire as constructor -->
+		</bean>
+		
+		
+		
+		<bean id="bean" class="com.capgemini.springcore.beans.BeanPostProcessorClass"></bean>
+<bean id="factorybean" class="com.capgemini.springcore.beans.BeanFactoryPostProcessorClass"></bean>
+</beans><!-- ctrl+shift+f -->
