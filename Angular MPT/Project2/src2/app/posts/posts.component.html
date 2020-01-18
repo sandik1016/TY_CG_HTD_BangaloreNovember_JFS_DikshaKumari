@@ -1,0 +1,30 @@
+<div class="alert alert-danger" *ngIf='message'>{{message}}</div>
+<div class="container mt-3">
+<table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>index</th>
+            <th>UserId</th>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Body</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let post of posts;index as i'>
+            <td>{{i+1}}</td>
+            <td>{{post.userId}}</td>
+            <td>{{post.id}}</td>
+            <td>{{post.title}}</td>
+            <td>{{post.body}}</td>
+            <td><button class="btn btn-outline-success" (click)='selectProduct(product)'>
+                update
+            </button></td>
+        
+            <td><button class="btn btn-outline-primary" (click)='deleteproducts(product)'>Delete</button></td>
+        </tr>
+    </tbody>
+</table>
+</div>

@@ -1,0 +1,24 @@
+[
+    {
+        "name": "Rajsekhar",
+        "email": "rajshekhar@gmail.com",
+        "phone": 8865989865
+    }, {
+        "name": "Abilash",
+        "email": "abilash@gmail.com",
+        "phone": 9865989865
+    }, {
+       "name": "Chandan",
+        "email": "chandan@gmail.com",
+        "phone": 7865989865
+    }, {
+       "name": "Rahul",
+        "email": "rahul@gmail.com",
+        "phone": 7765989865
+    },
+    {
+       "name": "Giridhar",
+        "email": "giridhar@gmail.com",
+        "phone": 9965989865
+    }
+]

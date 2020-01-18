@@ -1,0 +1,12 @@
+<div class="col-md-4 card float-left" *ngFor='let customer of customers'>
+    <div class ="card">
+        <div class="class-header">
+    <h2 class="text-center">{{customer.name}}</h2>
+    </div>
+    <div class="card-body">
+    <h3 class="text-center">{{customer.email}}</h3>
+</div>
+<div class="card-footer">
+    <h4 class="text-center">ContactNo:{{customer.phone}}</h4>
+</div>
+    </div>

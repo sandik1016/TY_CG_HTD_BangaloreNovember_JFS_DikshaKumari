@@ -1,0 +1,31 @@
+<div class ="col-md-4 offset-4 mt-3 mb-3">
+    <input type="search" name="search" class="form-control"
+    [(ngModel)]='search' placeholder="enter product to search">
+</div>
+<div class="alert alert-danger" *ngIf='message'>{{message}}
+</div>
+<div class="col-md-3 float-left mt-3" *ngFor='let product of products'>
+    <div class ="card">
+        <div class="class-header">
+            {{product.name | titlecase}}
+        </div>
+        <div class="card-body">
+            <img [src]="product.imageUrl" alt ="product image"
+            height="200px" width="100%">
+            <p>{{product.cost| currency :'INR'}}</p>
+        </div>
+        <div class="card-footer">
+            <div class="btn-group col-md-12">
+                <button class ="btn btn-outline-success"
+                (click)='selectProduct(product)'>
+                    Update
+                </button>
+                <button class ="btn btn-outline-dark"
+                (click)='deleteProduct(product)'>
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
