@@ -1,0 +1,80 @@
+<div class="image" style="background-image: url('https://cdn.pixabay.com/photo/2016/12/13/22/15/chart-1905225_1280.jpg');  
+ background-size: cover; padding-top: 2%;">
+    <div class="alert alert-success" *ngIf='success'>{{success}}</div>
+    <div class="alert alert-danger" *ngIf='failure'>{{failure}}</div>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6 offset-md-6">
+                <div class="card">
+                    <div class="card-header text-center font-weight-bold text-success">
+                        <h2>Add Stock Details</h2>
+                    </div>
+                    <div class="card-body">
+                        <form #addStockForm='ngForm' (ngSubmit)='addStock(addStockForm)'>
+                            <div class="form-group mt-3">
+                                <label for="stockId" class="text-dark font-weight-bold">Stock Id <span
+                                        style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="stockId" #stockId="ngModel" ngModel
+                                    name="stockId" minlength="1" maxlength="5" required pattern=" ">
+                                <!-- <div class="text-danger" *ngIf='stockId.invalid && stockId.touched'>
+                                    <div class="text-danger" *ngIf='stockId.errors.required'>
+                                        This field is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='stockId.errors.pattern'>
+                                        First digit should not start with 0
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="price" class="text-dark font-weight-bold">Price<span
+                                        style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="price" #price="ngModel" ngModel name="price"
+                                    required pattern=" ">
+                                <!-- <div class="text-danger" *ngIf='price.invalid && price.touched'>
+                                    <div class="text-danger" *ngIf='price.errors.required'>
+                                        This field is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='price.errors.pattern'>
+                                        Price should not start with 0 </div>
+                                </div>
+                            </div> -->
+                        </div>
+                            <div class="form-group">
+                                <label for="stockQuantity" class="text-dark font-weight-bold">Stock Quantity <span
+                                        style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="stockQuantity" #stockQuantity="ngModel"
+                                    ngModel name="stockQuantity" required pattern=" ">
+                                <!-- <div class="text-danger" *ngIf='stockQuantity.invalid && stockQuantity.touched'>
+                                    <div class="text-danger" *ngIf='stockQuantity.errors.required'>
+                                        This field is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='stockQuantity.errors.pattern'>
+                                        Stock Quantity should be in numbers.
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="form-group">
+                                <label for="companyName" class="text-dark font-weight-bold">Company Name <span
+                                        style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="companyName" #companyName="ngModel" ngModel
+                                    required name="companyName" pattern=" ">
+                                <!-- <div class="text-danger" *ngIf='companyName.invalid && companyName.touched'>
+                                    <div class="text-danger" *ngIf='companyName.errors.required'>
+                                        This field is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='companyName.errors.pattern'>
+                                        Company name should only have alphabets.
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div>
+                                <button  type="submit"
+                                    class="btn btn-success btn-lg btn-block float-right mt-4">Add Stock</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>

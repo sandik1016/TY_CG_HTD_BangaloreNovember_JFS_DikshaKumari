@@ -1,0 +1,80 @@
+ .navbar{ 
+    background-color: rgb(9, 44, 9); 
+    margin: 20px;
+    border: 1px solid black;
+    opacity: 0.7;
+    filter: alpha(opacity=60);
+    
+}
+/*.nav-link{
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+}
+.navbar-nav.mr-auto{
+    color: black;
+    
+}
+
+.dropdown-item
+{ 
+    
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+.dropdown-item:hover{
+    color: chocolate;
+}
+.dropdown-menu{
+    width: 50px;
+}
+.navbar-brand {
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    font-size: 3vw;
+    font-weight: 90;
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    background-size: 80% 50%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+    -ms-background-clip: text;
+    -ms-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    background-image: linear-gradient(45deg, 
+                      #7794ff, 
+                      #44107A,
+                      #FF1361,
+                      #FFF800);
+    animation: .8s shake infinite alternate;
+  }
+  
+  @keyframes shake {
+    0% { transform: skewX(-15deg); }
+    5% { transform: skewX(15deg); }
+    10% { transform: skewX(-15deg); }
+    15% { transform: skewX(15deg); }
+    20% { transform: skewX(0deg); }
+    100% { transform: skewX(0deg); }  
+  }
+  
+   */
+   .navbar-brand{
+    font-family: 'Times New Roman', Times, serif;
+    color: red;
+    font-size: 25px;
+    font-weight: bold;
+     text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
+  }
+ .button{
+    font-family: 'Times New Roman', Times, serif;
+
+  }
+
+ 

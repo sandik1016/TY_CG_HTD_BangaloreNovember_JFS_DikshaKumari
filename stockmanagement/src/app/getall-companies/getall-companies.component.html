@@ -1,0 +1,44 @@
+<div class="image" style="background-image: url('https://www.itl.cat/pngfile/big/55-556325_plain-simple-wallpapers-simple-plain-background-hd.jpg');  
+background-size: cover; padding-top: 50px; padding-bottom: 30%;">
+    <div class="alert alert-danger" *ngIf='success'>
+        {{success}}
+        <span class="float-right">
+        <button (click)='deleteMessage()'>&times;</button>
+    </span>
+    </div>
+    <h2 class="font-weight-bold text-center text-light">
+        Company Details
+    </h2>
+    <div class="col-md-9 ">
+        <table class="table table-bordered mt-3" style="margin-left: 15%; margin-right: 20px;">
+            <thead class="thead text-center">
+                <tr>
+                    <th scope="col">Company Id</th>
+                    <th scope="col">Company Name</th>
+                    <th scope="col">Stock Availabilty</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Update</th>
+                    <th scope="col" style="padding-right: 30px;">Delete</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let company of companies'>
+                    <th>{{company.companyId}}</th>
+                    <td>{{company.companyName}}</td>
+                    <td>{{company.stockAvailability}}</td>
+                    <td>{{company.quantity}}</td>
+                    <td><button class="btn btn-outline-success" (click)='selectCompany(company)'>
+                    Update
+                </button></td>
+                    <td>
+                        <!-- <button class="btn btn-outline-dark" (click)=' deleteHaulier(haulier)'>
+                        Delete
+                    </button> -->
+                        <img style="margin-left: 15px " height="40px " width="50px " src="https://cdn.pixabay.com/photo/2016/10/10/01/49/delete-1727486__340.png" (click)=' deletecompany(company)'>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>

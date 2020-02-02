@@ -1,0 +1,50 @@
+ <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" routerLink="/">
+        Stock Management System
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle font-weight-bold" routerLink="/investor"  id="investor" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Investor
+                </a>
+                <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item text-dark font-weight-bold" routerLink="">My Profile</a>
+                    <a class="dropdown-item text-dark font-weight-bold" routerLink="/stock/getall-stocks">Stocks</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle font-weight-bold" routerLink="/manager"  id="manager" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Manager
+                </a>
+                <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item text-dark font-weight-bold" routerLink="/stock">Stocks</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle font-weight-bold" routerLink="/admin" id="admin"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 Admin
+                </a>
+                <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item text-dark font-weight-bold" routerLink="/company">Company</a>
+                    <a class="dropdown-item text-dark font-weight-bold" routerLink="/manager">Manager</a>
+                </div>
+            </li>
+
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <button type="button" class="btn btn-outline-warning font-weight-bold "  routerLink="/register"><span><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;&nbsp;Register</span></button>
+            </li>&nbsp;&nbsp;&nbsp;
+            <li class="nav-item active">
+                <button type="button" class="btn btn-outline-warning font-weight-bold"  routerLink="/login"><span><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;&nbsp;Login</span></button>
+            </li>
+        </ul>
+
+    </div>
+</nav>
