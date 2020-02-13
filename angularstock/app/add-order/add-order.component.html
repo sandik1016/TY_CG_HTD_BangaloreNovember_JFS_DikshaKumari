@@ -1,0 +1,91 @@
+<div class="image" style="background-image: url('https://cdn.pixabay.com/photo/2017/08/28/19/15/background-2691002__340.jpg');  
+background-size: cover; padding-top: 2%;">
+    <div class="alert alert-success" *ngIf='success'>{{success}}</div>
+    <div class="alert alert-danger" *ngIf='failure'>{{failure}}</div>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6 offset-md-6">
+                <div class="card">
+                    <div class="card-header text-center font-weight-bold text-success">
+                        <h2>Add Order Details</h2>
+                    </div>
+                    <div class="card-body">
+                        <form #addOrderForm='ngForm' (ngSubmit)='addOrder(addOrderForm)'>
+                            <div class="form-group mt-3">
+                                <label for="orderNo" class="text-dark font-weight-bold">Order Number <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="orderNo" #orderNo="ngModel" ngModel name="orderNo" minlength="1" maxlength="5" required pattern="[1-9]{1}[0-9]{0,4}">
+                                <div class="text-danger" *ngIf='orderNo.invalid && orderNo.touched'>
+                                    <div class="text-danger" *ngIf='orderNo.errors.required'>
+                                        This feild is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='orderNo.errors.pattern'>
+                                        First digit should not starts with 0
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="customerId" class="text-dark font-weight-bold">Customer Id <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="customerId" #customerId="ngModel" ngModel name="customerId" required pattern="[1-9]{1}[0-9]{0,4}">
+                                <div class="text-danger" *ngIf='customerId.invalid && customerId.touched'>
+                                    <div class="text-danger" *ngIf='customerId.errors.required'>
+                                        This feild is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='customerId.errors.pattern'>
+                                        First digit should not be 0 and length should also be less than 6 digits
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="productId" class="text-dark font-weight-bold">Product Id <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="productId" #productId="ngModel" ngModel name="productId" required pattern="[1-9]{1}[0-9]{0,4}">
+                                <div class="text-danger" *ngIf='productId.invalid && productId.touched'>
+                                    <div class="text-danger" *ngIf='productId.errors.required'>
+                                        This feild is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='productId.errors.pattern'>
+                                        First digit should not be 0 and length should also be less than 6 digits
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="haulierId" class="text-dark font-weight-bold">Haulier Id <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="haulierId" #haulierId="ngModel" ngModel name="haulierId" required pattern="[1-9]{1}[0-9]{0,4}">
+                                <div class="text-danger" *ngIf='haulierId.invalid && haulierId.touched'>
+                                    <div class="text-danger" *ngIf='haulierId.errors.required'>
+                                        This feild is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='haulierId.errors.pattern'>
+                                        First digit should not be 0 and length should also be less than 6 digits
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="quantity" class="text-dark font-weight-bold">Quantity <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="quantity" #quantity="ngModel" ngModel name="quantity" required pattern="[1-9]{1}[0-9]{0,4}">
+                                <div class="text-danger" *ngIf='quantity.invalid && quantity.touched'>
+                                    <div class="text-danger" *ngIf='quantity.errors.required'>
+                                        This feild is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='quantity.errors.pattern'>
+                                        Length of the quantity should contains maximum 5 digits
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="deliveryDate" class="text-dark font-weight-bold">Delivery date <span style="color:red">*</span></label>
+                                <input type="date" class="form-control" id="deliveryDate" #deliveryDate="ngModel" required ngModel name="deliveryDate" [(ngModel)]="today" [min]="miniDate" (change)='valueChanged()'>
+                            </div>
+                            <div class="form-group">
+                                <label for="deliveryDay" class="text-dark font-weight-bold">Delivery day <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="deliveryDay" #deliveryDay="ngModel" required ngModel name="deliveryDay" disabled [(ngModel)]="deliveryDayValue">
+                            </div>
+                            <div>
+                                <button type="submit" [disabled]='addOrderForm.form.invalid' class="btn btn-success btn-lg btn-block float-right mt-4">Add Order</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

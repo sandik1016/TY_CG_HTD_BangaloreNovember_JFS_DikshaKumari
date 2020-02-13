@@ -1,0 +1,89 @@
+<div class="alert alert-success" *ngIf='success'>{{success}}</div>
+<div class="alert alert-danger" *ngIf='failure'>{{failure}}</div>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center font-weight-bold text-success">
+                    <h2>Update Company Details</h2>
+                </div>
+                <div class="card-body">
+                    <form #editCompanyForm='ngForm' (ngSubmit)='updateCompany(editCompanyForm)'>
+                        <input type="hidden" name="companyId" id="companyId" #companyId="ngModel" class="form-control" required [(ngModel)]='userService.selectedCompanyToUpdate.companyId'>
+                        <div class="form-group ">
+                            <label for="companyName" class="text-dark font-weight-bold">Company Name</label>
+                            <input type="text" name="companyName" id="companyName" readonly #companyName="ngModel" class="form-control" required [(ngModel)]='userService.selectedCompanyToUpdate.companyName'>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="stockAvailability" class="text-dark font-weight-bold">Stock Availability</label>
+                            <input type="text" name="stockAvailability" readonly id="stockAvailability" #stockAvailability="ngModel" pattern="[1-9]{1}[0-9]{2,8}" class="form-control" required [(ngModel)]='userService.selectedCompanyToUpdate.stockAvailability'>
+                            <div class="text-danger" *ngIf='stockAvailability.invalid && stockAvailability.touched'>
+                                <div class="text-danger" *ngIf='stockAvailability.errors.required'>
+                                    This field is mandatory
+                                </div>
+                                <div class="text-danger" *ngIf='stockAvailability.errors.pattern'>
+                                    It will accept minimum 3 maximum 8 digits
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="totalQuantity" class="text-dark font-weight-bold">Total Quantity</label>
+                            <input type="text" name="totalQuantity" id="totalQuantity" #totalQuantity="ngModel" pattern="[1-9]{1}[0-9]{2,8}" class="form-control" required [(ngModel)]='userService.selectedCompanyToUpdate.totalQuantity'>
+                            <div class="text-danger" *ngIf='totalQuantity.invalid && totalQuantity.touched'>
+                                <div class="text-danger" *ngIf='totalQuantity.errors.required'>
+                                    This field is mandatory
+                                </div>
+                                <div class="text-danger" *ngIf='totalQuantity.errors.pattern'>
+                                    It will accept minimum 3 maximum 8 digits
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="bidPrice" class="text-dark font-weight-bold">Bid Price</label>
+                            <input type="text" name="bidPrice" id="bidPrice" #bidPrice="ngModel" pattern="[1-9]{1}[0-9]{2,8}" class="form-control" required [(ngModel)]='userService.selectedCompanyToUpdate.bidPrice'>
+                            <div class="text-danger" *ngIf='bidPrice.invalid && bidPrice.touched'>
+                                <div class="text-danger" *ngIf='bidPrice.errors.required'>
+                                    This field is mandatory
+                                </div>
+                                <div class="text-danger" *ngIf='bidPrice.errors.pattern'>
+                                    It will accept minimum 3 maximum 8 digits
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="maxStockAmount" class="text-dark font-weight-bold">Maximum Stock Amount</label>
+                            <input type="text" name="maxStockAmount" id="maxStockAmount" #maxStockAmount="ngModel" pattern="[1-9]{1}[0-9]{2,8}" class="form-control" required [(ngModel)]='userService.selectedCompanyToUpdate.maxStockAmount'>
+                            <div class="text-danger" *ngIf='maxStockAmount.invalid && maxStockAmount.touched'>
+                                <div class="text-danger" *ngIf='maxStockAmount.errors.required'>
+                                    This field is mandatory
+                                </div>
+                                <div class="text-danger" *ngIf='maxStockAmount.errors.pattern'>
+                                    It will accept minimum 3 maximum 8 digits
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="maxStockQuantity" class="text-dark font-weight-bold">Maximum Stock Quantity</label>
+                            <input type="text" name="maxStockQuantity" id="maxStockQuantity" #maxStockQuantity="ngModel" pattern="[1-9]{1}[0-9]{2,8}" class="form-control" required [(ngModel)]='userService.selectedCompanyToUpdate.maxStockQuantity'>
+                            <div class="text-danger" *ngIf='maxStockQuantity.invalid && maxStockQuantity.touched'>
+                                <div class="text-danger" *ngIf='maxStockQuantity.errors.required'>
+                                    This field is mandatory
+                                </div>
+                                <div class="text-danger" *ngIf='maxStockQuantity.errors.pattern'>
+                                    It will accept minimum 3 maximum 8 digits
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div>
+                            <button [disabled]='editCompanyForm.form.invalid' type="submit" class="btn btn-success btn-block float-right">
+                        Update Company
+                    </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

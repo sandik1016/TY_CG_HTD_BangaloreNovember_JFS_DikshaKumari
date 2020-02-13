@@ -1,0 +1,111 @@
+<div class="image" style="background-image: url('https://cdn.pixabay.com/photo/2017/08/28/19/15/background-2691002__340.jpg');  
+background-size: cover; padding-top: 2%;">
+    <div class="alert alert-success" *ngIf='success'>{{success}}</div>
+    <div class="alert alert-danger" *ngIf='failure'>{{failure}}</div>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6 offset-md-6">
+                <div class="card">
+                    <div class="card-header text-center font-weight-bold text-success">
+                        <h2>Add Haulier Details</h2>
+                    </div>
+                    <div class="card-body">
+                        <form #addHaulierForm='ngForm' (ngSubmit)='addHaulier(addHaulierForm)'>
+                            <div class="form-group mt-3">
+                                <label for="haulierId" class="text-dark font-weight-bold">Haulier Id <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="haulierId" #haulierId="ngModel" ngModel name="haulierId" minlength="1" maxlength="5" required pattern="[1-9]{1}[0-9]{0,4}">
+                                <div class="text-danger" *ngIf='haulierId.invalid && haulierId.touched'>
+                                    <div class="text-danger" *ngIf='haulierId.errors.required'>
+                                        This feild is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='haulierId.errors.pattern'>
+                                        First digit should not starts with 0
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="haulierName" class="text-dark font-weight-bold">Haulier Name <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="haulierName" #haulierName="ngModel" ngModel name="haulierName" required pattern="[A-Za-z]{5,20}">
+                                <div class="text-danger" *ngIf='haulierName.invalid && haulierName.touched'>
+                                    <div class="text-danger" *ngIf='haulierName.errors.required'>
+                                        This feild is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='haulierName.errors.pattern'>
+                                        It will accept upper and lower case characters and minimum 5 maximum 20 letters
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address1" class="text-dark font-weight-bold">Street Address1 <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="address1" #address1="ngModel" ngModel name="address1" required pattern="^[#.0-9a-zA-Z\s,-]+$">
+                                <div class="text-danger" *ngIf='address1.invalid && address1.touched'>
+                                    <div class="text-danger" *ngIf='address1.errors.required'>
+                                        This feild is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='address1.errors.pattern'>
+                                        sample type: #1, North Street, Chennai - 11
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address2" class="text-dark font-weight-bold">Street Address2 </label>
+                                <input type="text" class="form-control" id="address2" #address2="ngModel" ngModel name="address2">
+                            </div>
+                            <div class="form-group">
+                                <label for="town" class="text-dark font-weight-bold">Town <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="town" #town="ngModel" ngModel name="town" required pattern="[A-Za-z0-9]{5,20}">
+                                <div class="text-danger" *ngIf='town.invalid && town.touched'>
+                                    <div class="text-danger" *ngIf='town.errors.required'>
+                                        This feild is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='town.errors.pattern'>
+                                        It should contains only letters or numbers, Length is min 5 and max 20 characters
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="postalCode" class="text-dark font-weight-bold"> Postal Code <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="postalCode" #postalCode="ngModel" ngModel name="postalCode" required pattern="([0-9]{6}|[0-9]{3}\s[0-9]{3})">
+                                <div class="text-danger" *ngIf='postalCode.invalid && postalCode.touched'>
+                                    <div class="text-danger" *ngIf='postalCode.errors.required'>
+                                        This feild is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='postalCode.errors.pattern'>
+                                        Code should be separated by space after 3 digit or other is code is written in 6 digit.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="telephone" class="text-dark font-weight-bold">Mobile <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="telephone" #telephone="ngModel" ngModel name="telephone" required pattern="^[6-9][0-9]{9}$">
+                                <div class="text-danger" *ngIf='telephone.invalid && telephone.touched'>
+                                    <div class="text-danger" *ngIf='telephone.errors.required'>
+                                        This feild is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='telephone.errors.pattern'>
+                                        It should be in 10 digits number format
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="text-dark font-weight-bold">Email <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="email" email #email="ngModel" ngModel required name="email" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}">
+                                <div class="text-danger" *ngIf='email.invalid && email.touched'>
+                                    <div class="text-danger" *ngIf='email.errors.required'>
+                                        This feild is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='email.errors.pattern'>
+                                        Email must be a valid email address
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <button [disabled]='addHaulierForm.form.invalid' type="submit" class="btn btn-success btn-lg btn-block float-right mt-4">Add Haulier</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

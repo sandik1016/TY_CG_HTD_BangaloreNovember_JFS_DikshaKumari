@@ -1,0 +1,61 @@
+<div class="alert alert-success" *ngIf='success'>{{success}}</div>
+<div class="alert alert-danger" *ngIf='failure'>{{failure}}</div>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center font-weight-bold text-success">
+                    <h2>Update Stock Details</h2>
+                </div>
+                <div class="card-body">
+                    <form #editStockForm='ngForm' (ngSubmit)='updateStock(editStockForm)'>
+                        <input type="hidden" name="stockId" id="stockId" #stockId="ngModel" class="form-control" required [(ngModel)]='userService.selectedStockToUpdate.stockId'>
+                        <div class="form-group ">
+                            <label for="price" class="text-dark font-weight-bold">Price</label>
+                            <input type="text" name="price" id="price" pattern="[1-9]{1}[0-9]{5,8}" #price="ngModel" class="form-control" required [(ngModel)]='userService.selectedStockToUpdate.price'>
+                            <div class="text-danger" *ngIf='price.invalid && price.touched'>
+                                <div class="text-danger" *ngIf='price.errors.required'>
+                                    This field is mandatory
+                                </div>
+                                <div class="text-danger" *ngIf='price.errors.pattern'>
+                                    First digit should not starts with 0
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="stockQuantity" class="text-dark font-weight-bold">Stock Quantity</label>
+                            <input type="text" name="stockQuantity" id="stockQuantity" #stockQuantity="ngModel" pattern="[1-9][0-9]{3,8}" class="form-control" required [(ngModel)]='userService.selectedStockToUpdate.stockQuantity'>
+                            <div class="text-danger" *ngIf='stockQuantity.invalid && stockQuantity.touched'>
+                                <div class="text-danger" *ngIf='stockQuantity.errors.required'>
+                                    This field is mandatory
+                                </div>
+                                <div class="text-danger" *ngIf='stockQuantity.errors.pattern'>
+                                    Maximum length should be 6 digits number
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="companyId" class="text-dark font-weight-bold">Company Id</label>
+                            <input type="text" name="companyId" id="companyId" readonly #companyId="ngModel" pattern="^[A-Z]+(?:[ _-][0-9]+)*$" class="form-control" required [(ngModel)]='userService.selectedStockToUpdate.companyId'>
+                            <div class="text-danger" *ngIf='companyId.invalid && companyId.touched'>
+                                <div class="text-danger" *ngIf='companyId.errors.required'>
+                                    This field is mandatory
+                                </div>
+                                <div class="text-danger" *ngIf='companyId.errors.pattern'>
+                                    This should in CG-01 format only
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div>
+                            <button type="submit" class="btn btn-success btn-block float-right">
+                        Update Stock
+                    </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

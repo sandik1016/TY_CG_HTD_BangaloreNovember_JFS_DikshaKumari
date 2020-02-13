@@ -1,0 +1,102 @@
+<div class="alert alert-success" *ngIf='success'>{{success}}</div>
+<div class="alert alert-danger" *ngIf='failure'>{{failure}}</div>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center font-weight-bold text-success">
+                    <h2>Update Customer Details</h2>
+                </div>
+                <div class="card-body">
+                    <form #editCustomerForm='ngForm' (ngSubmit)='updateCustomer(editCustomerForm)'>
+
+                        <input type="hidden" name="customerId" id="customerId1" #customerId="ngModel" class="form-control" required [(ngModel)]='userService.selectedCustomerToUpdate.customerId'>
+
+                        <div class="form-group ">
+                            <label for="customerName1" class="text-dark font-weight-bold">Customer Name</label>
+                            <input type="text" name="customerName" pattern="[A-Za-z]{5,20}" id="customerName1" #customerName="ngModel" class="form-control" required [(ngModel)]='userService.selectedCustomerToUpdate.customerName'>
+                            <div class="text-danger" *ngIf='customerName.invalid && customerName.touched'>
+                                <div class="text-danger" *ngIf='customerName.errors.required'>
+                                    This feild is mandatory
+                                </div>
+                                <div class="text-danger" *ngIf='customerName.errors.pattern'>
+                                    It will accept upper and lower case characters and minimum 5 maximum 20 letters
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address11" class="text-dark font-weight-bold">Street address1</label>
+                            <input type="text" pattern="^[#.0-9a-zA-Z\s,-]+$" name="address1" id="address11" #address1="ngModel" class="form-control" required [(ngModel)]='userService.selectedCustomerToUpdate.address1'>
+                            <div class="text-danger" *ngIf='address1.invalid && address1.touched'>
+                                <div class="text-danger" *ngIf='address1.errors.required'>
+                                    This feild is mandatory
+                                </div>
+                                <div class="text-danger" *ngIf='address1.errors.pattern'>
+                                    sample type: #1, North Street, Chennai - 11
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="address21" class="text-dark font-weight-bold">Street address2</label>
+                            <input type="text" name="address2" id="address21" #address2="ngModel" class="form-control" [(ngModel)]='userService.selectedCustomerToUpdate.address2'>
+                        </div>
+                        <div class="form-group">
+                            <label for="town1" class="text-dark font-weight-bold">Town</label>
+                            <input type="text" pattern="[A-Za-z0-9]{5,20}" name="town" id="town1" #town="ngModel" class="form-control" required [(ngModel)]='userService.selectedCustomerToUpdate.town'>
+                            <div class="text-danger" *ngIf='town.invalid && town.touched'>
+                                <div class="text-danger" *ngIf='town.errors.required'>
+                                    This feild is mandatory
+                                </div>
+                                <div class="text-danger" *ngIf='town.errors.pattern'>
+                                    It should contains only letters or numbers, Length is min 5 and max 20 characters
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="postalCode1" class="text-dark font-weight-bold">Postal Code</label>
+                            <input type="text" pattern="([0-9]{6}|[0-9]{3}\s[0-9]{3})" name="postalCode" id="postalCode1" #postalCode="ngModel" class="form-control" required [(ngModel)]='userService.selectedCustomerToUpdate.postalCode'>
+                            <div class="text-danger" *ngIf='postalCode.invalid && postalCode.touched'>
+                                <div class="text-danger" *ngIf='postalCode.errors.required'>
+                                    This feild is mandatory
+                                </div>
+                                <div class="text-danger" *ngIf='postalCode.errors.pattern'>
+                                    Code should be separated by space after 3 digit or other is code is written in 6 digit.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email1" class="text-dark font-weight-bold">Email</label>
+                            <input type="text" name="email" id="email1" email #email="ngModel" class="form-control" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}" required [(ngModel)]='userService.selectedCustomerToUpdate.email'>
+                            <div class="text-danger" *ngIf='email.invalid && email.touched'>
+                                <div class="text-danger" *ngIf='email.errors.required'>
+                                    This feild is mandatory
+                                </div>
+                                <div class="text-danger" *ngIf='email.errors.pattern'>
+                                    Email must be a valid email address
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNumber1" class="text-dark font-weight-bold">Mobile </label>
+                            <input type="text" name="phoneNumber" pattern="^[6-9][0-9]{9}$" id="phoneNumber1" #phoneNumber="ngModel" class="form-control" required [(ngModel)]='userService.selectedCustomerToUpdate.phoneNumber'>
+                            <div class="text-danger" *ngIf='phoneNumber.invalid && phoneNumber.touched'>
+                                <div class="text-danger" *ngIf='phoneNumber.errors.required'>
+                                    This feild is mandatory
+                                </div>
+                                <div class="text-danger" *ngIf='phoneNumber.errors.pattern'>
+                                    It should be in 10 digits number format
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <button type="submit" [disabled]='editCustomerForm.form.invalid' class="btn btn-lg btn-success btn-block float-right">
+                        Update Customer
+                    </button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

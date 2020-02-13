@@ -1,0 +1,50 @@
+<div class="image" style="background-image: url('https://www.itl.cat/pngfile/big/55-556325_plain-simple-wallpapers-simple-plain-background-hd.jpg');  
+background-size: cover; padding-top: 50px; padding-bottom: 30%;">
+    <div class="alert alert-success" *ngIf='success'>
+        {{success}}
+        <span class="float-right">
+        <button (click)='deleteMessage()'>&times;</button>
+    </span>
+    </div>
+    <h2 class="font-weight-bold text-center text-light">
+        Company Details
+    </h2>
+    <input type="search" name="search" id="search" class='form-control col-md-4 offset-4 mt-3 mb-3' [(ngModel)]='search' placeholder="Search For Companies...">
+    <div class="col-md-9 ">
+        <table class="table table-bordered mt-3" style="margin-left: 15%; margin-right: 20px;">
+            <thead class="thead text-center">
+                <tr>
+                    <th scope="col">Company Id</th>
+                    <th scope="col">Company Name</th>
+                    <th scope="col">Stock Availability</th>
+                    <th scope="col">Total Quantity</th>
+                    <th scope="col">Bid Price</th>
+                    <th scope="col">Maximum Stock Amount</th>
+                    <th scope="col">Maximum Stock Quantity</th>
+                    <th scope="col">Update</th>
+                    <th scope="col" style="padding-right: 30px;">Delete</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let company of companies| companies: search;'>
+                    <th>{{company.companyId}}</th>
+                    <td>{{company.companyName}}</td>
+                    <td>{{company.stockAvailability}}</td>
+                    <td>{{company.totalQuantity}}</td>
+                    <td>{{company.bidPrice}}</td>
+                    <td>{{company.maxStockAmount}}</td>
+                    <td>{{company.maxStockQuantity}}</td>
+                    <td><button class="btn btn-outline-success" (click)='selectCompany(company) '>
+                    Update
+                </button></td>
+                    <td>
+                        <button class="btn">
+                        <img style="margin-left: 15px " height="40px " width="50px " src="https://cdn.pixabay.com/photo/2016/10/10/01/49/delete-1727486__340.png" (click)=' deleteCompany(company) '>
+                    </button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>

@@ -1,0 +1,61 @@
+<div class="image" style="background-image: url('https://pixabay.com/get/52e7dd464a5aac14ea9d8579ce2f357c103ac3e45659714f74287cd096/stock-exchange-4785080.jpg');  
+ background-size: cover; padding-top: 2%;padding-bottom: 8%;">
+    <div class="alert alert-success" *ngIf='success'>{{success}}</div>
+    <div class="alert alert-danger" *ngIf='exception'>{{exception}}</div>
+    <div class="alert alert-danger" *ngIf='failure'>{{failure}}</div>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6 offset-md-6">
+                <div class="card">
+                    <div class="card-header text-center font-weight-bold text-success">
+                        <h2>Add Stock Details</h2>
+                    </div>
+                    <div class="card-body">
+                        <form #addStockForm='ngForm' (ngSubmit)='addStock(addStockForm)'>
+
+                            <div class="form-group mt-3">
+                                <label for="price" class="text-dark font-weight-bold">Price <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="price" #price="ngModel" ngModel name="price" required pattern="[1-9]{1}[0-9]{2,8}">
+                                <div class="text-danger" *ngIf='price.invalid && price.touched'>
+                                    <div class="text-danger" *ngIf='price.errors.required'>
+                                        This field is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='price.errors.pattern'>
+                                        <p>First digit should not starts with 0 </p> This should accept minimum 3 and maximum 8
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="stockQuantity" class="text-dark font-weight-bold">Stock Quantity <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="stockQuantity" #stockQuantity="ngModel" ngModel name="stockQuantity" required pattern="[1-9]{1}[0-9]{2,8}">
+                                <div class="text-danger" *ngIf='stockQuantity.invalid && stockQuantity.touched'>
+                                    <div class="text-danger" *ngIf='stockQuantity.errors.required'>
+                                        This field is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='stockQuantity.errors.pattern'>
+                                        only numbers are allowed and should not starts with 0 maximum 8 digits
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="companyId" class="text-dark font-weight-bold">Company Id <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="companyId" #companyId="ngModel" ngModel name="companyId" required pattern="^[A-Z]+(?:[ _-][0-9]+)*$">
+                                <div class="text-danger" *ngIf='companyId.invalid && companyId.touched'>
+                                    <div class="text-danger" *ngIf='companyId.errors.required'>
+                                        This field is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='companyId.errors.pattern'>
+                                        This should in CG-01 format only
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <button [disabled]='addStockForm.form.invalid' type="submit" class="btn btn-success btn-lg btn-block float-right mt-4">Add Stock</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

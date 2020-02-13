@@ -1,0 +1,81 @@
+<div class="alert alert-success" *ngIf='success'>{{success}}</div>
+<div class="alert alert-danger" *ngIf='failure'>{{failure}}</div>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center font-weight-bold text-success">
+                    <h2>Update Order Details</h2>
+                </div>
+                <div class="card-body">
+                    <form #editOrderForm='ngForm' (ngSubmit)='updateOrder(editOrderForm)'>
+
+                        <input type="hidden" name="orderNo" id="orderNo" #orderNo="ngModel" class="form-control" required [(ngModel)]='userService.selectedOrderToUpdate.orderNo'>
+
+                        <div class="form-group ">
+                            <label for="customerId" class="text-dark font-weight-bold">Customer Id</label>
+                            <input type="text" name="customerId" id="customerId" #customerId="ngModel" pattern="[1-9]{1}[0-9]{0,4}" class="form-control" required [(ngModel)]='userService.selectedOrderToUpdate.customerId'>
+                            <div class="text-danger" *ngIf='customerId.invalid && customerId.touched'>
+                                <div class="text-danger" *ngIf='customerId.errors.required'>
+                                    This feild is mandatory
+                                </div>
+                                <div class="text-danger" *ngIf='customerId.errors.pattern'>
+                                    First digit should not be 0 and length should also be less than 6 digits
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="haulierId" class="text-dark font-weight-bold">Haulier Id</label>
+                            <input type="text" name="haulierId" id="haulierId" #haulierId="ngModel" class="form-control" pattern="[1-9]{1}[0-9]{0,4}" required [(ngModel)]='userService.selectedOrderToUpdate.haulierId'>
+                            <div class="text-danger" *ngIf='haulierId.invalid && haulierId.touched'>
+                                <div class="text-danger" *ngIf='haulierId.errors.required'>
+                                    This feild is mandatory
+                                </div>
+                                <div class="text-danger" *ngIf='haulierId.errors.pattern'>
+                                    First digit should not be 0 and length should also be less than 6 digits
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="productId" class="text-dark font-weight-bold">product Id</label>
+                            <input type="text" name="productId" id="productId" #productId="ngModel" class="form-control" pattern="[1-9]{1}[0-9]{0,4}" required [(ngModel)]='userService.selectedOrderToUpdate.productId'>
+                            <div class="text-danger" *ngIf='productId.invalid && productId.touched'>
+                                <div class="text-danger" *ngIf='productId.errors.required'>
+                                    This feild is mandatory
+                                </div>
+                                <div class="text-danger" *ngIf='productId.errors.pattern'>
+                                    First digit should not be 0 and length should also be less than 6 digits
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="deliveryDate" class="text-dark font-weight-bold">Delivery date</label>
+                            <input type="date" name="deliveryDate" id="deliveryDate" #deliveryDate="ngModel" class="form-control" required [(ngModel)]='userService.selectedOrderToUpdate.deliveryDate'>
+                        </div>
+                        <div class="form-group">
+                            <label for="deliveryDay" class="text-dark font-weight-bold">Delivery day</label>
+                            <input type="text" name="deliveryDay" id="deliveryDay" #deliveryDay="ngModel" class="form-control" required [(ngModel)]='userService.selectedOrderToUpdate.deliveryDay'>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity" class="text-dark font-weight-bold">Quantity</label>
+                            <input type="text" name="quantity" id="quantity" #quantity="ngModel" class="form-control" pattern="[1-9]{1}[0-9]{0,4}" required [(ngModel)]='userService.selectedOrderToUpdate.quantity'>
+                            <div class="text-danger" *ngIf='quantity.invalid && quantity.touched'>
+                                <div class="text-danger" *ngIf='quantity.errors.required'>
+                                    This feild is mandatory
+                                </div>
+                                <div class="text-danger" *ngIf='quantity.errors.pattern'>
+                                    Length of the quantity should contains maximum 5 digits
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <button type="submit" [disabled]='editOrderForm.form.invalid' class="btn btn-success btn-lg btn-block btn-block">
+                        Update Order
+                    </button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

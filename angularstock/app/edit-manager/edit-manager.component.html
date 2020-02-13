@@ -1,0 +1,52 @@
+<div class="alert alert-success" *ngIf='success'>{{success}}</div>
+<div class="alert alert-danger" *ngIf='failure'>{{failure}}</div>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center font-weight-bold text-success">
+                    <h2>Update Manager Details</h2>
+                </div>
+                <div class="card-body">
+                    <form #editManagerForm='ngForm' (ngSubmit)='updateManager(editManagerForm)'>
+                        <input type="hidden" name="userId" id="userId" #userId="ngModel" class="form-control" required [(ngModel)]='userService.selectedManagerToUpdate.userId'>
+                        <div class="form-group">
+                            <label for="name" class="text-dark font-weight-bold">Name</label>
+                            <input type="text" name="name" id="name" readonly #name="ngModel" pattern="[1-9]{1}[0-9]{0,5}" class="form-control" required [(ngModel)]='userService.selectedManagerToUpdate.name'>
+
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="email" class="text-dark font-weight-bold">Email</label>
+                            <input type="email" name="email" id="email" readonly pattern="^[a-zA-Z]{5,20}$" #email="ngModel" class="form-control" required [(ngModel)]='userService.selectedManagerToUpdate.email'>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="text-dark font-weight-bold">Password</label>
+                            <input type="text" name="password" id="password" #password="ngModel" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="form-control" required [(ngModel)]='userService.selectedManagerToUpdate.password'>
+                            <div class="text-danger" *ngIf='password.invalid && password.touched'>
+                                <div class="text-danger" *ngIf='password.errors.required'>
+                                    This field is mandatory
+                                </div>
+                                <div class="text-danger" *ngIf='password.errors.pattern'>
+                                    Must contain at least one number and one uppercase and lowercase letter, and at least 8 characters
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="role" class="text-dark font-weight-bold">Role</label>
+                            <input type="text" name="role" id="role" readonly #role="ngModel" class="form-control" required [(ngModel)]='userService.selectedManagerToUpdate.role'>
+
+                        </div>
+                        <br>
+                        <div>
+                            <button type="submit" class="btn btn-success btn-block float-right">
+                        Update Company
+                    </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+}
+
+h4 {
+    padding-top: 2%;
+    text-align: center;
+    color: wheat;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h3 {
+    text-align: center;
+    padding-top: 7%;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.background {
+    padding-left: 43%;
+    padding-right: 35%;
+    padding-top: 5%;
+    padding-bottom: 15%;
+    /* background-image: url('https://cdn.pixabay.com/photo/2015/12/08/08/42/banner-1082652_1280.jpg'); */
+    background-image: url('https://cdn.pixabay.com/photo/2017/09/06/16/13/hand-2722107_1280.jpg');
+    background-size: cover;
+}
+
+.card {
+    background-color: rgba(0, 0, 30, .3);
+}

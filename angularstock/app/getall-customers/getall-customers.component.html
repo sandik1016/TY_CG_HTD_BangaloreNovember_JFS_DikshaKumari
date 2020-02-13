@@ -1,0 +1,52 @@
+<div class="image" style="background-image: url('https://www.itl.cat/pngfile/big/55-556325_plain-simple-wallpapers-simple-plain-background-hd.jpg');  
+background-size: cover; padding-top: 50px; padding-bottom: 30%;">
+    <div class="alert alert-danger" *ngIf='success'>
+        {{success}}
+        <span class="float-right">
+        <button (click)='deleteMessage()'>&times;</button>
+    </span>
+    </div>
+    <h2 class="font-weight-bold text-center text-light">
+        Customer Details
+    </h2>
+    <div class="col-md-9">
+        <table class="table table-bordered mt-3" style="margin-left: 15%; margin-right: 20px;">
+            <thead class="thead text-center">
+                <tr>
+                    <th scope="col">Customer Id</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Street Address1</th>
+                    <th scope="col">Street Address2</th>
+                    <th scope="col">Town</th>
+                    <th scope="col">Postal Code</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let customer of customers'>
+                    <th>{{customer.customerId}}</th>
+                    <td>{{customer.customerName}}</td>
+                    <td>{{customer.address1}}</td>
+                    <td>{{customer.address2}}</td>
+                    <td>{{customer.town}}</td>
+                    <td>{{customer.postalCode}}</td>
+                    <td>{{customer.email}}</td>
+                    <td>{{customer.phoneNumber}}</td>
+                    <td><button class="btn btn-outline-success" (click)='selectCustomer(customer)'>
+                    Update
+                </button></td>
+                    <td>
+                        <!-- <button class="btn btn-outline-dark" (click)=' deleteHaulier(haulier)'>
+                        Delete
+                    </button> -->
+                        <img style="margin-left: 15px " height="40px " width="50px " src="https://cdn.pixabay.com/photo/2016/10/10/01/49/delete-1727486__340.png" (click)=' deleteCustomer(customer)'>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>

@@ -1,0 +1,51 @@
+<div class="image" style="background-image: url('https://www.itl.cat/pngfile/big/55-556325_plain-simple-wallpapers-simple-plain-background-hd.jpg');  
+background-size: cover; padding-top: 50px; padding-bottom: 30%;">
+    <div class="alert alert-danger" *ngIf='success'>
+        {{success}}
+        <span class="float-right">
+        <button (click)='deleteMessage()'>&times;</button>
+    </span>
+    </div>
+    <h2 class="font-weight-bold text-center text-light">
+        Order Details
+    </h2>
+    <div class="col-md-9 ">
+        <table class="table table-bordered mt-3" style="margin-left: 15%; margin-right: 20px;">
+            <thead class="thead text-center">
+                <tr>
+                    <th scope="col">Order Number</th>
+                    <th scope="col">Customer Id</th>
+                    <th scope="col">Haulier Id</th>
+                    <th scope="col">Product Id</th>
+                    <th scope="col">Delivery date</th>
+                    <th scope="col">Delivery day</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let order of orders'>
+                    <th>{{order.orderNo}}</th>
+                    <td>{{order.customerId}}</td>
+                    <td>{{order.haulierId}}</td>
+                    <td>{{order.productId}}</td>
+                    <td>{{order.deliveryDate}}</td>
+                    <td>{{order.deliveryDay}}</td>
+                    <td>{{order.quantity}}</td>
+
+                    <td><button class="btn btn-outline-success" (click)='selectOrder(order)'>
+                    Update
+                </button></td>
+                    <td>
+                        <!-- <button class="btn btn-outline-dark" (click)=' deleteHaulier(haulier)'>
+                        Delete
+                    </button> -->
+                        <img style="margin-left: 15px " height="40px " width="50px " src="https://cdn.pixabay.com/photo/2016/10/10/01/49/delete-1727486__340.png" (click)=' deleteOrder(order)'>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>

@@ -1,0 +1,32 @@
+<h2 class="font-weight-bold text-center text-dark">
+    My Shares
+</h2>
+<div class="col-md-9 ">
+    <table class="table table-bordered mt-3" style="margin-left: 15%; margin-right: 20px;">
+        <thead class="thead text-center">
+            <tr>
+
+                <th scope="col">Company Name</th>
+                <th scope="col">Bid Price</th>
+                <th scope="col">Available Shares</th>
+                <th scope="col" style="padding-right: 30px;">Available Amount</th>
+                <th scope="col" style="padding-right: 30px;">Sell</th>
+
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            <tr *ngFor='let share of shares'>
+
+                <td>{{share.companyDetails.companyName}}</td>
+                <td>{{share.companyDetails.bidPrice}}</td>
+                <td>{{share.availableShares}}</td>
+                <td>{{share.availableAmount}}</td>
+                <td><button class="btn btn-outline-success" (click)='sell(share.shareId)'>
+                    Sell
+                </button></td>
+
+            </tr>
+
+        </tbody>
+    </table>
+</div>

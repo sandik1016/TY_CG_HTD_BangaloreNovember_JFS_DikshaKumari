@@ -1,0 +1,81 @@
+<div class="alert alert-success" *ngIf='success'>{{success}}</div>
+<div class="alert alert-danger" *ngIf='failure'>{{failure}}</div>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center font-weight-bold text-success">
+                    <h2>Update Contract Details</h2>
+                </div>
+                <div class="card-body">
+                    <form #editContractForm='ngForm' (ngSubmit)='updateContract(editContractForm)'>
+
+                        <input type="hidden" name="contractNo" id="contractNo1" #contractNo="ngModel" class="form-control" required [(ngModel)]='userService.selectedContractToUpdate.contractNo'>
+
+                        <div class="form-group ">
+                            <label for="customerId2" class="text-dark font-weight-bold">Customer Id</label>
+                            <input type="text" name="customerId" id="customerId" #customerId="ngModel" class="form-control" pattern="[1-9]{1}[0-9]{0,4}" required [(ngModel)]='userService.selectedContractToUpdate.customerId'>
+                            <div class="text-danger" *ngIf='customerId.invalid && customerId.touched'>
+                                <div class="text-danger" *ngIf='customerId.errors.required'>
+                                    This field is mandatory
+                                </div>
+                                <div class="text-danger" *ngIf='customerId.errors.pattern'>
+                                    First digit should not be 0 and length should also be less than 6 digits
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="haulierId2" class="text-dark font-weight-bold">Haulier Id</label>
+                            <input type="text" name="haulierId" id="haulierId" #haulierId="ngModel" class="form-control" pattern="[1-9]{1}[0-9]{0,4}" required [(ngModel)]='userService.selectedContractToUpdate.haulierId'>
+                            <div class="text-danger" *ngIf='haulierId.invalid && haulierId.touched'>
+                                <div class="text-danger" *ngIf='haulierId.errors.required'>
+                                    This field is mandatory
+                                </div>
+                                <div class="text-danger" *ngIf='haulierId.errors.pattern'>
+                                    First digit should not be 0 and length should also be less than 6 digits
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="productId2" class="text-dark font-weight-bold">product Id</label>
+                            <input type="text" name="productId" id="productId" #productId="ngModel" class="form-control" pattern="[1-9]{1}[0-9]{0,4}" required [(ngModel)]='userService.selectedContractToUpdate.productId'>
+                            <div class="text-danger" *ngIf='productId.invalid && productId.touched'>
+                                <div class="text-danger" *ngIf='productId.errors.required'>
+                                    This field is mandatory
+                                </div>
+                                <div class="text-danger" *ngIf='productId.errors.pattern'>
+                                    First digit should not be 0 and length should also be less than 6 digits
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="deliveryDate1" class="text-dark font-weight-bold">Delivery date</label>
+                            <input type="date" name="deliveryDate" id="deliveryDate" #deliveryDate="ngModel" class="form-control" required [(ngModel)]='userService.selectedContractToUpdate.deliveryDate'>
+                        </div>
+                        <div class="form-group">
+                            <label for="deliveryDay1" class="text-dark font-weight-bold">Delivery day</label>
+                            <input type="text" name="deliveryDay" id="deliveryDay" #deliveryDay="ngModel" class="form-control" required [(ngModel)]='userService.selectedContractToUpdate.deliveryDay'>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity1" class="text-dark font-weight-bold">Quantity</label>
+                            <input type="text" name="quantity" id="quantity" pattern="[1-9]{1}[0-9]{0,4}" #quantity="ngModel" class="form-control" required [(ngModel)]='userService.selectedContractToUpdate.quantity'>
+                            <div class="text-danger" *ngIf='quantity.invalid && quantity.touched'>
+                                <div class="text-danger" *ngIf='quantity.errors.required'>
+                                    This field is mandatory
+                                </div>
+                                <div class="text-danger" *ngIf='quantity.errors.pattern'>
+                                    Length of the quantity should contains maximum 5 digits
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <button [disabled]='editContractForm.form.invalid' type="submit" class="btn btn-success btn-lg btn-block float-right">
+                        Update Contract
+                    </button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

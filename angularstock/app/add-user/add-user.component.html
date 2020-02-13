@@ -1,0 +1,118 @@
+<div class="image" style="background-image: url('https://cdn.pixabay.com/photo/2017/08/28/19/15/background-2691002__340.jpg');  
+background-size: cover; padding-top: 2%;">
+    <div class="alert alert-success" *ngIf='success'>{{success}}</div>
+    <div class="alert alert-danger" *ngIf='failure'>{{failure}}</div>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6 offset-md-6">
+                <div class="card">
+                    <div class="card-header text-center font-weight-bold text-success">
+                        <h2>Add User Details</h2>
+                    </div>
+                    <div class="card-body">
+
+                        <form class="form-horizontal" #addUserForm='ngForm' (ngSubmit)='addUser(addUserForm)'>
+
+                            <div class="form-group">
+                                <label for="name" class="cols-sm-2 control-label text-dark font-weight-bold">Name <span style="color:red">*</span></label>
+                                <div class="cols-sm-10">
+                                    <input type="text" class="form-control" pattern="[A-Za-z]{5,20}" name="name" required id="name" placeholder="Enter your Name" #name='ngModel' ngModel/>
+                                    <div class="input-group">
+                                        <div class="text-danger" *ngIf='name.invalid && name.touched'>
+                                            <div class="text-danger" *ngIf='name.errors.required'>
+                                                This feild is mandatory
+                                            </div>
+                                            <div class="text-danger" *ngIf='name.errors.pattern'>
+                                                It will accept upper and lower case characters and minimum 5 maximum 20 letters
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="cols-sm-2 control-label text-dark font-weight-bold">Email <span style="color:red">*</span></label>
+                                <div class="cols-sm-10">
+                                    <input type="text" class="form-control" name="email" email id="email" email required placeholder="Enter your Email" #email='ngModel' ngModel pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}" />
+                                    <div class="input-group">
+                                        <div class="text-danger" *ngIf='email.invalid && email.touched'>
+                                            <div class="text-danger" *ngIf='email.errors.required'>
+                                                This feild is mandatory
+                                            </div>
+                                            <div class="text-danger" *ngIf='email.errors.pattern'>
+                                                Email must be a valid email address
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password" class="cols-sm-2 control-label text-dark font-weight-bold">Password <span style="color:red">*</span></label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required id="password" placeholder="Enter your Password" #password='ngModel' ngModel />
+                                    </div>
+                                    <div class="text-danger" *ngIf='password.invalid && password.touched'>
+                                        <div class="text-danger" *ngIf='password.errors.required'>
+                                            This feild is mandatory
+                                        </div>
+                                        <div class="text-danger" *ngIf='password.errors.pattern'>
+                                            Must contain at least one number and one uppercase and lowercase letter, and at least 8 characters
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="id" class="cols-sm-2 control-label text-dark font-weight-bold">Id <span style="color:red">*</span></label>
+                                <div class="cols-sm-10">
+                                    <input type="text" class="form-control" required name="id" id="id" pattern="[1-9]{1}[0-9]{0,4}" placeholder="Enter Id to add" #id='ngModel' ngModel/>
+                                    <div class="input-group">
+                                        <div class="text-danger" *ngIf='id.invalid && id.touched'>
+                                            <div class="text-danger" *ngIf='id.errors.required'>
+                                                This feild is mandatory
+                                            </div>
+                                            <div class="text-danger" *ngIf='id.errors.pattern'>
+                                                First digit should not be 0 and length should also be less than 6 digits
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phoneNumber" class="cols-sm-2 control-label text-dark font-weight-bold">Mobile <span style="color:red">*</span></label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" required name="phoneNumber" pattern="^[6-9]{1}[0-9]{9}$" id="phoneNumber" placeholder="Enter your phone number" #phoneNumber='ngModel' ngModel/>
+                                    </div>
+                                    <div class="text-danger" *ngIf='phoneNumber.invalid && phoneNumber.touched'>
+                                        <div class="text-danger" *ngIf='phoneNumber.errors.required'>
+                                            This feild is mandatory
+                                        </div>
+                                        <div class="text-danger" *ngIf='phoneNumber.errors.pattern'>
+                                            It should be in 10 digits number format
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="role" class="text-dark font-weight-bold">Role <span style="color:red">*</span></label>
+                                <select name="role" id="role" #role='ngModel' required ngModel style="color: gray;" class="form-control font-weight-normal">
+                                <option value="" >Please Choose!!!</option>
+                                <option value="client" >Client</option>
+                                <option value="scheduler">Scheduler</option>
+                            </select>
+                            </div>
+                            <br>
+                            <div class="form-group ">
+                                <button [disabled]='addUserForm.form.invalid' type="submit" class="btn btn-success btn-lg btn-block login-button">Add User </button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
