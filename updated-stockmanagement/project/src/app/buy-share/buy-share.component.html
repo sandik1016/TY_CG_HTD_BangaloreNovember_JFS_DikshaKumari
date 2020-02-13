@@ -1,0 +1,99 @@
+<div class="image" style="background-image: url('https://cdn.pixabay.com/photo/2016/09/29/08/02/blue-1702287_1280.jpg');  
+ background-size: cover; padding-top: 2%;padding-bottom: 8%;">
+    <div class="alert alert-success" *ngIf='success'>{{success}}</div>
+    <div class="alert alert-danger" *ngIf='exception'>{{exception}}</div>
+    <div class="alert alert-danger" *ngIf='failure'>{{failure}}</div>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header text-center font-weight-bold text-success">
+                        <h2>Company Details</h2>
+                    </div>
+                    <div class="card-body">
+                        <form #editCompanyForm='ngForm'>
+                            <input type="hidden" name="companyId" id="companyId" #companyId="ngModel" class="form-control" required [(ngModel)]='userService.selectedCompanyToUpdate.companyId'>
+                            <div class="form-group ">
+                                <label for="companyName" class="text-dark font-weight-bold">Company Name</label>
+                                <input type="text" name="companyName" id="companyName" #companyName="ngModel" class="form-control" required readonly [(ngModel)]='userService.selectedCompanyToUpdate.companyName'>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="stockAvailability" class="text-dark font-weight-bold">Stock Availability</label>
+                                <input type="text" name="stockAvailability" id="stockAvailability" #stockAvailability="ngModel" readonly class="form-control" required [(ngModel)]='userService.selectedCompanyToUpdate.stockAvailability'>
+                                <div class="text-danger" *ngIf='stockAvailability.invalid && stockAvailability.touched'>
+                                    <div class="text-danger" *ngIf='stockAvailability.errors.required'>
+                                        This field is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='stockAvailability.errors.pattern'>
+                                        Maximum length should be 6 digits number
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bidPrice" class="text-dark font-weight-bold">Bid Price</label>
+                                <input type="text" name="bidPrice" id="bidPrice" #bidPrice="ngModel" readonly class="form-control" required [(ngModel)]='userService.selectedCompanyToUpdate.bidPrice'>
+                                <div class="text-danger" *ngIf='bidPrice.invalid && bidPrice.touched'>
+                                    <div class="text-danger" *ngIf='bidPrice.errors.required'>
+                                        This field is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='bidPrice.errors.pattern'>
+                                        Maximum length should be 6 digits number
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="maxStockAmount" class="text-dark font-weight-bold">Maximum Stock Amount</label>
+                                <input type="text" name="maxStockAmount" id="maxStockAmount" #maxStockAmount="ngModel" readonly class="form-control" required [(ngModel)]='userService.selectedCompanyToUpdate.maxStockAmount'>
+                                <div class="text-danger" *ngIf='maxStockAmount.invalid && maxStockAmount.touched'>
+                                    <div class="text-danger" *ngIf='maxStockAmount.errors.required'>
+                                        This field is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='maxStockAmount.errors.pattern'>
+                                        Maximum length should be 6 digits number
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="maxStockQuantity" class="text-dark font-weight-bold">Maximum Stock Quantity</label>
+                                <input type="text" name="maxStockQuantity" id="maxStockQuantity" #maxStockQuantity="ngModel" readonly class="form-control" required [(ngModel)]='userService.selectedCompanyToUpdate.maxStockQuantity'>
+                                <div class="text-danger" *ngIf='maxStockQuantity.invalid && maxStockQuantity.touched'>
+                                    <div class="text-danger" *ngIf='maxStockQuantity.errors.required'>
+                                        This field is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='maxStockQuantity.errors.pattern'>
+                                        Maximum length should be 6 digits number
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="quantity" class="text-dark font-weight-bold">Quantity to purchase</label>
+                                <input type="number" name="quantity" id="quantity" min="1" class="form-control" required [(ngModel)]='userService.selectedCompanyToUpdate.quantity' (change)='setPrice()'>
+                                <div class="text-danger" *ngIf='isStockAvailValid;else elseBlock'>
+                                    Number of Stocks purchasing should be less than the company stocks.
+                                </div>
+                                <ng-template #elseBlock>
+                                    <div class="text-danger" *ngIf='isMaxValid'>
+                                        Number of Stocks purchasing should be less than the maximum number of stocks.
+                                    </div>
+                                </ng-template>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="price" class="text-dark font-weight-bold">Price</label>
+                                <input type="number" name="price" id="price" class="form-control" required [(ngModel)]='userService.selectedCompanyToUpdate.price' disabled>
+
+                            </div>
+                            <br>
+                            <div>
+                                <button type="submit" class="btn btn-success btn-block float-right" (click)=buyshare(price)>
+                        Buy
+                    </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand pulse" routerLink="/"><i class="fa fa-line-chart" aria-hidden="true"></i>
+        Stock Management System
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link text-dark animated text font-weight-bold flip" routerLink="/contact-us" id="investor" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-smile-o" aria-hidden="true"></i>
+                    About Us
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-dark font-weight-bold" *ngIf='isInvestor()' routerLink="/investor" id="investor" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user-circle" aria-hidden="true"> </i> Investor
+                </a>
+                <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item text-dark font-weight-bold" routerLink="/my-profile">My Profile</a>
+                    <a class="dropdown-item text-dark font-weight-bold" routerLink="/investor-company">Marketwatch</a>
+                    <a class="dropdown-item text-dark font-weight-bold" routerLink="/my-shares">My Shares</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-dark font-weight-bold" *ngIf='isManager()' routerLink="/manager" id="manager" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user-o" aria-hidden="true"></i> Manager
+                </a>
+                <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item text-dark font-weight-bold" routerLink="/stock">Stocks</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-dark font-weight-bold" *ngIf='isAdmin()' routerLink="/admin" id="admin" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i> Admin
+                </a>
+                <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item text-dark font-weight-bold" routerLink="/company">Company</a>
+                    <a class="dropdown-item text-dark font-weight-bold" routerLink="/company-manager">Manager</a>
+                </div>
+            </li>
+
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <button type="button" class="btn btn-outline-warning font-weight-bold " *ngIf='!isLoggedIn()' routerLink="/register"><span><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;&nbsp;Register</span></button>
+            </li>&nbsp;&nbsp;&nbsp;
+            <li class="nav-item active">
+                <button type="button" class="btn btn-outline-warning font-weight-bold" *ngIf='!isLoggedIn()' routerLink="/login"><span><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;&nbsp;Login</span></button>
+            </li>
+            <li class="nav-item active">
+                <button type="button" class="btn btn-outline-warning font-weight-bold" *ngIf='isLoggedIn()' (click)='logout()' routerLink="/"><span><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;&nbsp;Logout</span></button>
+            </li>
+        </ul>
+
+    </div>
+</nav>

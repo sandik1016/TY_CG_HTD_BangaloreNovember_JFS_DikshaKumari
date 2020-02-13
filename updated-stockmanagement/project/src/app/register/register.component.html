@@ -1,0 +1,49 @@
+<div class="vid-container">
+    <video class="bgvid" autoplay="autoplay" muted="muted" preload="auto" loop>
+        <source src="https://player.vimeo.com/external/226624975.sd.mp4?s=9c40db4cda60fee006e62c90e0fad26d1e488b65&profile_id=164" type="video/webm">
+    </video>
+    <div class="inner-container">
+        <video class="bgvid inner" autoplay="autoplay" muted="muted" preload="auto" loop>
+        <source src="https://player.vimeo.com/external/183629063.sd.mp4?s=0491b9b4f233c15d1309e11c7032463edb4c6e3d&profile_id=164" type="video/webm">
+      </video>
+        <div class="box">
+            <div class="alert alert-danger" *ngIf='failure'>
+                {{failure}}</div>
+            <div class="alert alert-success" *ngIf='success'>{{success}}</div>
+            <form #addRegisterForm='ngForm' (ngSubmit)='addUser(addRegisterForm)'>
+                <h1><i class="fa fa-user"></i>Register Here</h1>
+                <input type="name" name="name" id="name" #name='ngModel' ngModel class="form-control" placeholder="Enter name" required pattern="[A-Za-z]{5,20}">
+                <div *ngIf='name.touched && name.invalid'>
+                    <div class="alert alert-danger" style="padding: 0% !important; width: 50% !important; margin-left: 25%;" *ngIf='name.errors.required'>This field is mandatory</div>
+                    <div class="alert alert-danger" style="padding: 0% !important; width: 50% !important; margin-left: 25%;" *ngIf='name.errors.pattern'>
+                        only characters are allowed(minimum 5 )
+                    </div>
+                </div>
+                <input type="email" name="email" id="email" #email='ngModel' ngModel class="form-control" placeholder="Enter email Id" required email pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}">
+                <div class="input-group">
+                    <div class="alert alert-danger" *ngIf='email.invalid && email.touched' style="padding: 0% !important; width: 50% !important; margin-left: 25%;">
+                        <div class="text-danger" *ngIf='email.errors.required' style="padding: 0% !important; width: 50% !important; margin-left: 25%;">
+                            This field is mandatory
+                        </div>
+                        <div class="alert alert-danger" *ngIf='email.errors.pattern' style="padding: 0% !important; width: 50% !important; margin-left: 25%;">
+                            Not a valid email
+                        </div>
+                    </div>
+                </div>
+
+                <input type="password" name="password" id="password" #password='ngModel' ngModel class="form-control" placeholder="Enter your password..." required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{8,14}$">
+                <div *ngIf='password.invalid && password.touched'>
+                    <div class="alert alert-danger" *ngIf='password.errors.required' style="padding: 0% !important; width: 50% !important; margin-left: 25%;">This field is mandatory</div>
+                    <div class="alert alert-danger" *ngIf='password.errors.pattern' style="padding: 0% !important; width: 50% !important; margin-left: 25%;">8 to 14 characters, should include one uppercase,one lowercase,one digit and one special character.
+                    </div>
+                </div>
+                <div style="width: 210px !important;margin-left: 92px;">
+                    <input type="text" name="role" id="role" #role='ngModel' [(ngModel)]='this.user' class="form-control" required readonly>
+                </div>
+
+                <button [disabled]='addRegisterForm.form.invalid' type="submit"><i class="fa fa-sign-in"></i> Register</button>
+            </form>
+        </div>
+
+    </div>
+</div>

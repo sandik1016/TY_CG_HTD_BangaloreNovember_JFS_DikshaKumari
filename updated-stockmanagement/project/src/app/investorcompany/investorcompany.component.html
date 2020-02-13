@@ -1,0 +1,29 @@
+<div class="image" style="background-image: url('https://cdn.pixabay.com/photo/2020/01/20/19/41/stairs-4781221_1280.jpg');  
+background-size: cover; padding-top: 50px; padding-bottom: 30%;">
+
+    <div class="col-md-9 ">
+        <table class="table table-bordered mt-3" style="margin-left: 15%; margin-right: 20px;">
+            <thead class="thead text-center">
+                <tr>
+                    <th scope="col">Company Name</th>
+                    <th scope="col">Stock Avaliability</th>
+                    <th scope="col">Bid Price</th>
+                    <th scope="col">Buy Share</th>
+                </tr>
+            </thead>
+            <tbody style="text-align: center;">
+                <tr *ngFor='let company of companies'>
+
+                    <td>{{company.companyName}}</td>
+                    <td>{{company.stockAvailability}}</td>
+                    <td>{{company.bidPrice}}</td>
+
+                    <td><button class="btn btn-outline-success" (click)='buy(company)'>
+               Buy
+            </button></td>
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>

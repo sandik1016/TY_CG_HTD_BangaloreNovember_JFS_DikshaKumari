@@ -1,0 +1,102 @@
+<div class="image" style="background-image: url('https://cdn.pixabay.com/photo/2015/08/29/02/08/coins-912718_1280.jpg');  
+ background-size: cover; padding-top: 2%;padding-bottom: 8%;">
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header text-center font-weight-bold text-success">
+                        <h2>Sell My Shares</h2>
+                    </div>
+                    <div class="card-body">
+                        <form #editCompanyForm='ngForm'>
+                            <input type="hidden" name="companyId" id="companyId" #companyId="ngModel" class="form-control" required [(ngModel)]='userService.selectedSharesToUpdate.companyDetails.companyId'>
+                            <div class="form-group ">
+                                <label for="companyName" class="text-dark font-weight-bold">Company Name</label>
+                                <input type="text" name="companyName" id="companyName" #companyName="ngModel" class="form-control" required readonly [(ngModel)]='userService.selectedSharesToUpdate.companyDetails.companyName'>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bidPrice" class="text-dark font-weight-bold">Bid Price</label>
+                                <input type="text" name="bidPrice" id="bidPrice" #bidPrice="ngModel" pattern="[1-9]{1}[0-9]{0,5}" readonly class="form-control" required [(ngModel)]='userService.selectedSharesToUpdate.companyDetails.bidPrice'>
+                                <div class="text-danger" *ngIf='bidPrice.invalid && bidPrice.touched'>
+                                    <div class="text-danger" *ngIf='bidPrice.errors.required'>
+                                        This field is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='bidPrice.errors.pattern'>
+                                        Maximum length should be 6 digits number
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="totalSharesSold" class="text-dark font-weight-bold">Total Shares Sold</label>
+                                <input type="text" name="totalSharesSold" id="totalSharesSold" #totalSharesSold="ngModel" pattern="[1-9]{1}[0-9]{0,5}" readonly class="form-control" required [(ngModel)]='userService.selectedSharesToUpdate.totalSharesSold'>
+                                <div class="text-danger" *ngIf='totalSharesSold.invalid && totalSharesSold.touched'>
+                                    <div class="text-danger" *ngIf='totalSharesSold.errors.required'>
+                                        This field is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='totalSharesSold.errors.pattern'>
+                                        Maximum length should be 6 digits number
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="totalAmountSold" class="text-dark font-weight-bold">Total Amount Sold</label>
+                                <input type="text" name="totalAmountSold" id="totalAmountSold" #totalAmountSold="ngModel" pattern="[1-9]{1}[0-9]{0,5}" readonly class="form-control" required [(ngModel)]='userService.selectedSharesToUpdate.totalAmountSold'>
+                                <div class="text-danger" *ngIf='totalAmountSold.invalid && totalAmountSold.touched'>
+                                    <div class="text-danger" *ngIf='totalAmountSold.errors.required'>
+                                        This field is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='totalAmountSold.errors.pattern'>
+                                        Maximum length should be 6 digits number
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="availableShares" class="text-dark font-weight-bold">Available Shares</label>
+                                <input type="text" name="availableShares" id="availableShares" #availableShares="ngModel" pattern="[1-9]{1}[0-9]{0,5}" readonly class="form-control" required [(ngModel)]='userService.selectedSharesToUpdate.availableShares'>
+                                <div class="text-danger" *ngIf='availableShares.invalid && availableShares.touched'>
+                                    <div class="text-danger" *ngIf='availableShares.errors.required'>
+                                        This field is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='availableShares.errors.pattern'>
+                                        Maximum length should be 6 digits number
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="availableAmount" class="text-dark font-weight-bold">Available Amount</label>
+                                <input type="text" name="availableAmount" id="availableAmount" #availableAmount="ngModel" pattern="[1-9]{1}[0-9]{0,5}" readonly class="form-control" required [(ngModel)]='userService.selectedSharesToUpdate.availableAmount'>
+                                <div class="text-danger" *ngIf='availableAmount.invalid && availableAmount.touched'>
+                                    <div class="text-danger" *ngIf='availableAmount.errors.required'>
+                                        This field is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='availableAmount.errors.pattern'>
+                                        Maximum length should be 6 digits number
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="quantity" class="text-dark font-weight-bold">Quantity to Sell</label>
+                                <input type="number" name="quantity" id="quantity" pattern="[1-9]{1}[0-9]{0,5}" class="form-control" required [(ngModel)]='userService.selectedSharesToUpdate.quantity' (change)='setPrice()'>
+                                <div class="text-danger" *ngIf='isValid'>
+                                    Number of Stocks selling should be less than the available number of stocks.
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="price" class="text-dark font-weight-bold">Price</label>
+                                <input type="number" name="price" id="price" pattern="[1-9]{1}[0-9]{0,5}" class="form-control" required [(ngModel)]='userService.selectedSharesToUpdate.price' disabled>
+                            </div>
+                            <br>
+                            <div>
+                                <button type="submit" class="btn btn-success btn-block float-right" (click)=sellshare(price)>
+                        Sell
+                    </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

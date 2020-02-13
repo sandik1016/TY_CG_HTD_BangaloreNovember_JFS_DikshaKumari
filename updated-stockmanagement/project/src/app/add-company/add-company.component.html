@@ -1,0 +1,107 @@
+<div class="image" style="background-image: url('https://cdn.pixabay.com/photo/2018/02/27/06/30/skyscraper-3184798_1280.jpg');  
+background-size: cover; padding-top: 2%; padding-bottom: 8%;">
+    <div class="alert alert-success" *ngIf="success">{{success}}</div>
+    <div class="alert alert-danger" *ngIf='failure'>{{failure}}</div>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6 offset-md-6">
+                <div class="card">
+                    <div class="card-header text-center font-weight-bold text-success">
+                        <h2>Add Company Details</h2>
+                    </div>
+                    <div class="card-body">
+                        <form #addCompanyForm='ngForm' (ngSubmit)='addCompany(addCompanyForm)'>
+                            <div class="form-group mt-3">
+                                <label for="companyId" class="text-dark font-weight-bold">Company Id <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="companyId" #companyId="ngModel" ngModel name="companyId" required pattern="^[A-Z]+(?:[ _-][0-9]+)*$">
+                                <div class="text-danger" *ngIf='companyId.invalid && companyId.touched'>
+                                    <div class="text-danger" *ngIf='companyId.errors.required'>
+                                        This field is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='companyId.errors.pattern'>
+                                        This should in CG-01 format only
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="companyName" class="text-dark font-weight-bold">Company Name <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="companyName" #companyName="ngModel" ngModel name="companyName" required pattern="[a-zA-Z]{3,20}">
+                                <div class="text-danger" *ngIf='companyName.invalid && companyName.touched'>
+                                    <div class="text-danger" *ngIf='companyName.errors.required'>
+                                        This field is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='companyName.errors.pattern'>
+                                        It will accept upper and lower case characters and minimum 3 maximum 20 letters
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="stockAvailability" class="text-dark font-weight-bold">Stock Availability <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="stockAvailability" #stockAvailability="ngModel" ngModel name="stockAvailability" required pattern="[1-9]{1}[0-9]{2,8}">
+                                <div class="text-danger" *ngIf='stockAvailability.invalid && stockAvailability.touched'>
+                                    <div class="text-danger" *ngIf='stockAvailability.errors.required'>
+                                        This field is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='stockAvailability.errors.pattern'>
+                                        It will accept minimum 3 maximum 8 digits
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="totalQuantity" class="text-dark font-weight-bold">Total Quantity<span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="totalQuantity" #totalQuantity="ngModel" ngModel name="totalQuantity" required pattern="[1-9]{1}[0-9]{2,8}">
+                                <div class="text-danger" *ngIf='totalQuantity.invalid && totalQuantity.touched'>
+                                    <div class="text-danger" *ngIf='totalQuantity.errors.required'>
+                                        This field is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='totalQuantity.errors.pattern'>
+                                        It will accept minimum 3 maximum 8 digits
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="bidPrice" class="text-dark font-weight-bold">Bid Price<span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="bidPrice" #bidPrice="ngModel" ngModel name="bidPrice" required pattern="[1-9]{1}[0-9]{2,8}">
+                                <div class="text-danger" *ngIf='bidPrice.invalid && bidPrice.touched'>
+                                    <div class="text-danger" *ngIf='bidPrice.errors.required'>
+                                        This field is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='bidPrice.errors.pattern'>
+                                        It will accept minimum 3 maximum 8 digits
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="maxStockAmount" class="text-dark font-weight-bold">Maximum Stock Amount<span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="maxStockAmount" #maxStockAmount="ngModel" ngModel name="maxStockAmount" required pattern="[1-9]{1}[0-9]{2,8}">
+                                <div class="text-danger" *ngIf='maxStockAmount.invalid && maxStockAmount.touched'>
+                                    <div class="text-danger" *ngIf='maxStockAmount.errors.required'>
+                                        This field is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='maxStockAmount.errors.pattern'>
+                                        It will accept minimum 3 maximum 8 digits
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="maxStockQuantity" class="text-dark font-weight-bold">Maximum Stock Quantity<span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="maxStockQuantity" #maxStockQuantity="ngModel" ngModel name="maxStockQuantity" required pattern="[1-9]{1}[0-9]{2,8}">
+                                <div class="text-danger" *ngIf='maxStockQuantity.invalid && maxStockQuantity.touched'>
+                                    <div class="text-danger" *ngIf='maxStockQuantity.errors.required'>
+                                        This field is mandatory
+                                    </div>
+                                    <div class="text-danger" *ngIf='maxStockQuantity.errors.pattern'>
+                                        It will accept minimum 3 maximum 8 digits
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <button [disabled]='addCompanyForm.form.invalid' id="button" type="submit" class="btn btn-success btn-lg btn-block float-right mt-4">Add Company</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
