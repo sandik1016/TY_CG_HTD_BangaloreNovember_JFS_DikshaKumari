@@ -1,0 +1,36 @@
+<div class="image" style="background-image: url('https://cdn.pixabay.com/photo/2017/07/13/23/11/cinema-2502213__340.jpg');  
+background-size: cover; padding-top: 50px; padding-bottom: 30%;">
+    <div class="alert alert-success" *ngIf='success'>
+        {{success}}
+        <span class="float-right">
+        </span>
+    </div>
+    <h2 class="font-weight-bold text-center text-light">
+        Theater Details
+    </h2>
+    <div>
+        <input type="search" name="search" id="search" class='form-control col-md-4 offset-4 mt-3 mb-3'
+            [(ngModel)]='search' placeholder="Search For Theaters...">
+    </div>
+    <div class="col-md-9 ">
+        <table class="table table-bordered mt-3" style="margin-left: 15%; margin-right: 20px;">
+            <thead class="thead text-center" >
+                <tr>
+                    <th scope="col">Theater Id</th>
+                    <th scope="col">Theater Name</th>
+                    <th scope="col">Theater City</th>
+                    <th scope="col">Number of Screens</th>
+                    
+                </tr>
+            </thead>
+            <tbody *ngFor='let theater of theaters| theaters: search;'>
+                <tr>
+                    <th>{{theater.theaterId}}</th>
+                    <td>{{theater.theaterName}}</td>
+                    <td>{{theater.theaterCity}}</td>
+                    <td>{{theater.noOfScreens}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
